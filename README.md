@@ -178,8 +178,255 @@ l.reverse()
 
 Dictionaries are mappings and do not retain order! If you do want the capabilities of a dictionary but you would like ordering as well, check out the ordereddict object 
 
+---
+tuple
+
+to count a element in tuple
+```py
+t.count(x)
+```
+
+to finde index of
+```py
+t.index(x)
+```
+
+---
+Writing and reading from a file in jupyter notebook
+
+```py
+%%writefile myfile.txt
+Hello this is a text file
+this is the second line
+this is the third line
+```
+
+opening a file
+```py
+myfile = open('myfile.txt')
+```
+
+to know the working directory in jupyter notebook
+```py
+ pwd
+```
 
 
+reading a file
+```py
+myfile.read()
+```
+
+to move cursor back to start
+```py
+myfile.seek(0)
+```
+
+to close a file
+```py
+myfile.close()
+```
+
+---
+opening  file new way
+
+```py
+with open('myfile.txt') as my_new_file:
+    contents = my_new_file.read()  
+```
+
+on jupyter notebook on typing 'shift+tab' just near a function it will provide 
+documentation
+
+
+---
+Resources for More Basic Practice
+
+http://codingbat.com/python<br>
+https://projecteuler.net/archives<br>
+http://www.codeabbey.com/index/task_list<br>
+https://www.reddit.com/r/dailyprogrammer<br>
+http://www.pythonchallenge.com/<br>
+
+---
+
+
+tuple unpacking
+
+```py
+mylist = [(1,2),(3,4),(5,6),(7,8)]
+for a,b in mylist:
+    print(a)
+    print(b)
+```
+
+iterating dictionary
+
+will print only key
+```py
+d = {'k1':1,'k2':2,'k3':3}
+for item in d:
+    print(item)
+```
+
+to only print values
+```py
+d = {'k1':1,'k2':2,'k3':3}
+for item in d.values():
+    print(item)
+```
+
+will print (key,values)
+```py
+d = {'k1':1,'k2':2,'k3':3}
+for item in d.items():
+    print(item)
+```
+
+```py
+d = {'k1':1,'k2':2,'k3':3}
+for key,value in d.items():
+    print(f'{key} contains value {value}')
+```
+
+---
+
+we can use pass keyword to put something into indentation
+
+```py
+
+x = [1,2,3]
+for item in x:
+    pass
+
+```
+
+---
+range()
+
+```py
+for num in range(0,11,2):
+    print(num)
+```
+
+output
+```
+0
+2
+4
+6
+8
+10
+```
+
+---
+enumerate
+
+normal method
+```py
+index_count = 0
+
+for letter in 'abcde':
+    print('At index {} the letter is {}'.format(index_count,letter))
+    index_count += 1
+```
+
+using enumerate
+```py
+word = 'abcde'
+for item in enumerate(word):
+    print(item)
+```
+
+```py
+word = 'abcde'
+for index,letter in enumerate(word):
+     print('At index {} the letter is {}'.format(index,letter))
+```
+
+---
+zip function
+
+```py
+mylist1 = [1,2,3]
+mylist2 = ['a','b','c']
+
+for item in zip(mylist1,mylist2):
+    print(item)
+
+```
+
+```py
+mylist1 = [1,2,3,4,5,6,7,8]
+mylist2 = ['a','b','c']
+mylist3 = [100,200,300]
+
+for item in zip(mylist1,mylist2,mylist3):
+    print(item)
+
+```
+
+casting it to a list
+```py
+list(zip(mylist1,mylist2))
+```
+
+tuple unpacking
+```py
+for a,b,c in zip(mylist1,mylist2,mylist3):
+    print(b)
+```
+
+in operator
+```py
+x in ['x','y','z']  #true
+'mykey' in {'mykey':345}  #true
+d = {'mykey':345}
+345 in d.values() #true
+345 in d.keys() #false
+```
+
+---
+min max
+
+```py
+mylist = [10,20,30,40,100]
+min(mylist)
+# 10
+
+max(mylist)
+# 100
+```
+
+---
+random library
+
+shuffle
+```py
+from random import random shuffle
+mylist = [1,2,3,4,5,6,7,8,9,10]
+shuffle(mylist)
+```
+
+random integer
+```py
+from random import randint
+mynum = randint(0,100)
+```
+
+---
+
+input in python
+
+```py
+result = input('Enter a number here: ')
+```
+
+casting into float or int
+```py
+float(result)
+int(result)
+```
 
 
 
