@@ -75,4 +75,113 @@ output
 
 > The fox brown quick
 
+<br>
+
+example 3
+> print('The {2} {1} {0}'.format('fox','brown','quick'))
+
+output
+
+> The quick brown fox
+
+<br>
+
+
+example 4
+> print('The {q} {b} {f}'.format(f='fox',b='brown',q='quick'))
+
+output
+
+> The quick brown fox
+
+<br>
+
+---
+float formatting follows "{value:width:precision f}"
+
+> result = 100/777
+> result
+```
+0.1287001287001287
+```
+> print("The result was {r}".format(r=result))
+
+```
+The result was 0.1287001287001287
+```
+
+> print("The result was {r:10.3f}".format(r=result))
+```
+The result was      0.129
+```
+> print("The result was {r:1.5f}".format(r=result))
+
+```
+The result was 0.12870
+```
+
+---
+f strings
+example 1
+> name = 'Aditya'
+> print(f'Hello, his name is {name}')
+```
+Hello, his name is Aditya
+```
+<br>
+
+example 2
+> name = 'Aditya'
+> age = 22
+> print(f'{name} is {age} years old.')
+```
+Aditya is 22 years old.
+```
+
+---
+HERE IS AN AWESOME SOURCE FOR PRINT FORMATTING:
+
+https://pyformat.info/
+
+---
+List
+
+to append a element
+```py
+l.append(x)
+````
+
+to pop an element from last
+```py
+l.pop()
+```
+
+to pop an element at a given index
+```py
+l.pop(2)
+# here popping element at index 2
+```
+
+to sort a list inplace
+```py
+l.sort()
+```
+
+to reverse a list
+```py
+l.reverse()
+```
+
+---
+
+1. Do dictionaries keep an order? How do I print the values of the dictionary in order?
+
+Dictionaries are mappings and do not retain order! If you do want the capabilities of a dictionary but you would like ordering as well, check out the ordereddict object 
+
+
+
+
+
+
+
 
