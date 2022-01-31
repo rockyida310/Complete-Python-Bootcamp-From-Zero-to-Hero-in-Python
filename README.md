@@ -428,6 +428,366 @@ float(result)
 int(result)
 ```
 
+---
+
+list comprehensions
+
+normal way
+```py
+mystring = 'hello'
+mylist = []
+for letter in mystring:
+    mylist.append(letter)
+```
+
+using list comprehensions
+```py
+mylist = [letter for letter in mystring]
+```
+
+we can also perform operations on first variable name
+```py
+mylist = [num**2 for num in range(0,11)]
+```
+
+we can also add if statements to it
+```py
+mylist = [x**2 for x in range(0,11) if x%2==0]
+```
+
+another example
+```py
+celcius = [0,10,20,34.5]
+fahrenheit = [( (9/5)*temp + 32 ) for temp in celcius]
+```
+
+if else statement in one line not recommended for redability
+```py
+results = [x if x%2==0 else 'ODD' for x in range(0,11)]
+```
+
+nested loops in list comprehensions
+
+
+normal way
+```py
+mylist = []
+
+for x in [2,4,6]:
+    for y in [100,200,300]:
+        mylist.append(x*y)
+
+```
+
+using list comprehensions
+```py
+mylist = [x*y for x in [2,4,6] for y in [100,200,300]]
+```
+
+---
+
+to convert to lowercase
+```py
+word = 'Sam'
+print(word[0].lower())
+```
+> s
+
+---
+
+in fizzbuzz problem be careful to check first multiple of both 3 and 5 , then 3 ,then 5
+
+---
+
+methods
+
+```py
+list.append(x)
+list.pop()
+
+```
+
+to know about a method or a function
+```py
+help(mylist.insert)
+```
+
+---
+ functions
+
+providing default values to functions parameter
+ ```py
+def say_hello(name='Default'):
+    print(f'Hello {name}')
+
+say_hello('Aditya')
+
+ ```
+
+ ---
+
+ functions and tuple unpacking
+ ```py
+stock_prices = [('Apple',200),('Google',400),('Microsoft',100)]
+for item in stock_prices:
+    print(item)
+
+for ticker,price in stock_prices:
+    print(ticker)
+ ```
+
+with functions and tuple unpacking
+```py
+work_hours = [('Abby',200),('Babby',400),('Cabby',100)]
+
+def employee_check(work_hours):
+    current_max = 0
+    employee_of_the_month = ''
+
+    for employee,hours in work_hours:
+        if hours > current_max:
+            current_max = hours
+            employee_of_the_month = employee
+
+    return (employee_of_the_month,current_max)
+
+name,hours = employee_check(work_hours) 
+```
+
+---
+
+interaction between python functions
+
+```py
+example = [1,2,3,4,5,6,7]
+from random import shuffle
+shuffle(example)
+
+```
+
+guessing game
+```py
+from random import shuffle
+
+def shuffle_list(mylist):
+    shuffle(mylist)
+    return mylist
+
+def player_guess():
+    guess = ''
+
+    while guess not in ['0','1','2']:
+        guess = input("Pick a number : 0,1 or 2 : ")
+    
+    return int(guess)
+
+def check_guess(mylist,guess):
+    if mylist[guess] == 'O':
+        print('Correct!')
+    else:
+        print('Wrong guess !')
+        print(mylist)
+
+
+# Initial_list
+mylist = [' ','O',' ']
+
+# shuffled list
+mixedUp_list = shuffle_list(mylist)
+
+# user guess
+guess = player_guess()
+
+#check guess
+check_guess(mixedUp_list,guess)
+
+```
+
+---
+
+*args and **kwargs
+
+for two parameters
+```py
+def myfunc(a,b):
+    return sum((a,b)) * 0.05
+
+myfunc(40,60)
+```
+
+```py
+def myfunc(*args):
+    return sum(args) * 0.05
+
+# now we can give any number of parameters we want
+myfunc(40,50,67,89)
+```
+
+args is just a name we can name it different
+
+<br>
+
+using **kwargs
+```py
+def myfunc(**kwargs):
+    print(kwargs)
+    if 'fruit' in kwargs:
+        print('My fruit of choice is {}'.format(kwargs['fruit']))
+    else:
+        print('I did not find any fruit here')
+
+myfunc(fruit='apple',veggie='lettuce')
+```
+
+using both *args and **kwargs together
+```py
+def myfunc(*args,**kwargs):
+    print(args)
+    print(kwargs)
+    print('I would like {} {}'.format(args[0],kwargs['food']))
+
+myfunc(10,20,30,fruit='orange',food='eggs',animal='dog')
+```
+
+
+---
+
+capitalize()  capitalizes the first letter of string 
+
+creating a string from list
+
+```py
+mylist = ['a','b','c']
+mystr = ''.join(mylist)
+```
+> abc
+
+```py
+mylist = ['a','b','c']
+mystr = '@'.join(mylist)
+```
+>a@b@c
+
+
+---
+
+summer_69 problem
+
+dont add values in between 6...9
+
+```py
+def summer_69(arr):
+
+    total = 0
+    add = True
+
+    for num in arr:
+        while add:
+            if num!=6:
+                total+=num
+                break
+            else:
+                add=false
+        while not add:
+            if num != 9:
+                break
+            else:
+                add=True
+                break
+    return total                
+
+```
+
+---
+
+#### lambda expressions map and filter
+
+```py
+def square(num):
+    return num**2
+
+my_nums = [1,2,3,4,5]
+
+for item in map(square,my_nums):
+    print(item)
+
+list(map(square,my_nums))
+
+```
+
+```py 
+def splicer(mystring):
+    if len(mystring) % 2 == 0:
+        return 'Even'
+    else:
+        return mystring[0]
+
+names = ['Andy','Eve','Sally']
+
+list(map(splicer,names))
+```
+
+<br>
+
+
+filter
+
+```py
+def check_even(num):
+    return num%2 == 0
+
+mynums = [1,2,3,4,5,6]
+
+list(filter(check_even,mynums))
+
+for n in filter(check_even,mynums):
+    print(n)
+
+```
+
+<br>
+
+lambda expression (also known as anonymous function)
+
+normal way
+```py
+def square(num):
+    return num**2
+```
+
+```py
+sqaure = lambda num: num ** 2
+square(5)
+```
+
+<br>
+
+using lambda function in conjunction with map
+```py
+list(map(lambda num: num**2,mynums))
+```
+
+using lambda function in conjunction with filter
+```py
+list(filter(lambda num: num%2 == 0 ,mynums))
+```
+
+```py
+names = ['Andy','Eve','Sally']
+list(map(lambda name: name[0] , names))
+```
+
+reversing names
+```py
+names = ['Andy','Eve','Sally']
+list(map(lambda name: name[::-1] , names))
+```
+
+
+
+
+
+
 
 
 
